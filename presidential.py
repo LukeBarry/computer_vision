@@ -1,12 +1,12 @@
 #!/usr/bin/python2
 
-import os, sys
+import os
 
 import cv2
 import numpy as np
 from PIL import Image # Optional
 
-fname = 'squirrel.png'
+fname = 'C:\Users\lbarry\Downloads\squirrel.png'
 
 # Read the squirrel image
 sq = cv2.imread(fname)
@@ -40,11 +40,12 @@ pilsq2 = Image.fromarray(pilsq2)
 
 # Load face detection cascade
 print 'loading face cascade...'
-cas_dir = '/usr/share/opencv/haarcascades/'
+cas_dir = 'C:/Users/lbarry/Downloads/opencv/sources/data/haarcascades_cuda/'
 cas_fname = 'haarcascade_frontalface_default.xml'
 #cas_fname = 'haarcascade_frontalface_alt.xml'
 cas = cv2.CascadeClassifier(os.path.join(cas_dir, cas_fname))
 
+# C:\Users\lbarry\Downloads\opencv\sources\data\haarcascades_cuda\haarcascade_frontalface_default.xml
 
 # Webcam viewing
 print 'starting webcam...'
@@ -139,5 +140,3 @@ while True:
     key = cv2.waitKey(1)
     if key != -1:
         break
-
-
