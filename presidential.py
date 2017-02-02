@@ -12,14 +12,15 @@ fname = 'C:\Users\lbarry\Downloads\squirrel.png'
 sq = cv2.imread(fname)
 print sq.shape
 
-cv2.imshow('squirrel', sq)
+# cv2.imshow('squirrel', sq)
 
 sq_gray = cv2.cvtColor(sq, cv2.COLOR_BGR2GRAY)
-cv2.imshow('squirrel gray', sq_gray)
+# cv2.imshow('squirrel gray', sq_gray)
 
 sq_gray_mask = sq_gray > 0
 sq_mask = np.array([[[v, v, v] for v in row] for row in sq_gray_mask])
 #cv2.waitKey()
+
 
 
 
@@ -84,9 +85,9 @@ while True:
 
         # Extend the box a bit
         #y -= int(h * 0.1)
-        h += int(h * 0.3)
-        x -= int(w * 0.1)
-        w += int(w * 0.2)
+        h += int(h * 0.1)
+        x -= int(w * 0.0)
+        w += int(w * 0.0)
         if y < 0 or y+h > frame.shape[0]:
             continue
         if x < 0 or x+w > frame.shape[1]:
