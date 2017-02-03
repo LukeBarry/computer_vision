@@ -4,7 +4,7 @@ from PIL import Image
 import os
 
 # Download goo.gl/nXaoEf as owl.png
-owl = cv2.imread('C:/Users/lbarry/Desktop/All folders/Misc/Capture.png')
+owl = cv2.imread('C:/Users/lbarry/Desktop/20.png')
 print owl.shape # (140, 160, 3)
 #cv2.imshow('owl', owl)
 owl_gray = cv2.cvtColor(owl, cv2.COLOR_BGR2GRAY)
@@ -17,7 +17,7 @@ owl_mask = np.array(
     [[[v, v, v] for v in row] for row in owl_gray_mask]
     )
 
-pilowl = Image.open('C:/Users/lbarry/Desktop/All folders/Misc/Capture.png')
+pilowl = Image.open('C:/Users/lbarry/Desktop/20.png')
 # PIL -> cv2
 owl2 = np.asarray(pilowl)
 owl2 = cv2.cvtColor(owl2, cv2.COLOR_RGB2BGR)
@@ -72,12 +72,13 @@ while True:
         # Put owl in box
         hair = owl
         hair_mask = owl_mask        
-        #hair_scale = w0 / float(hair.shape[1])      
-        #hair_mask = np.array(hair_mask, dtype='uint8')
-        #hair_mask = np.array(hair_mask, dtype=bool)
-        #hair = np.array(np.minimum((hair * 0.7) + 100, 255), dtype='uint8') # Optional
+        hair_scale = w0 / float(hair.shape[1])      
+        hair_mask = np.array(hair_mask, dtype='uint8')
+        hair_mask = np.array(hair_mask, dtype=bool)
+        hair = np.array(np.minimum((hair * 0.7) + 100, 255), dtype='uint8') # Optional
 
-        if y0 - hair.shape[0] < 0:
+        #if y0 - hair.shape[0] < 0:
+        if y0 + hair.shape[0] >= frame.shape[0]: 
             continue
         #It's got to be this line that puts the owl on top    
         np.copyto(frame[y0:y0 + hair.shape[0], x0:x0+hair.shape[1], :], hair, where=hair_mask)
