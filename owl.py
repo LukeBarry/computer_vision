@@ -3,6 +3,8 @@ import numpy as np
 from PIL import Image
 import os
 
+#Replace the face with the pa cyber owl logo
+
 # Download goo.gl/nXaoEf as owl.png
 owl = cv2.imread('C:/Users/lbarry/Desktop/20.png')
 print owl.shape # (140, 160, 3)
